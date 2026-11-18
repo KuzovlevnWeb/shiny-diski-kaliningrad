@@ -32,7 +32,8 @@
     "postalCode": "236022",
     "addressCountry": "RU"
   },
-  "geo": { "@type": "GeoCoordinates", "latitude": 54.746061, "longitude": 20.495797 },
+  "geo": { "@type": "GeoCoordinates", "latitude": 54.745219, "longitude": 20.496418 },
+  "sameAs": ["https://yandex.ru/maps/org/shiny_diski/1032059957/"],
   "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
@@ -227,6 +228,35 @@ section { position: relative; }
 .fact-value .unit { color: var(--accent); }
 .fact-label { color: var(--muted); font-size: 0.9375rem; }
 
+/* ---------- Reviews ---------- */
+.reviews-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.rating-card {
+  position: sticky; top: calc(var(--header-h) + 24px);
+  display: grid; gap: 22px;
+  padding: clamp(24px, 3vw, 36px);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.rating-score { display: flex; align-items: flex-end; gap: 16px; }
+.rating-value { font-family: var(--font-display); font-weight: 700; font-size: clamp(3.5rem, 7vw, 5rem); line-height: .9; }
+.rating-meta { display: grid; gap: 6px; padding-bottom: 4px; }
+.stars { display: flex; gap: 3px; color: var(--accent); }
+.stars svg { width: 20px; height: 20px; }
+.stars .star-part { position: relative; width: 20px; height: 20px; }
+.stars .star-part svg { position: absolute; inset: 0; }
+.stars .star-part .bg { color: #3A4048; }
+.stars .star-part .fg { clip-path: inset(0 20% 0 0); }
+.rating-count { color: var(--muted); font-size: 0.9375rem; }
+.rating-source { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.9375rem; padding-top: 18px; border-top: 1px solid var(--line); }
+.rating-source strong { color: var(--text); font-weight: 600; }
+.rating-actions { display: grid; gap: 10px; }
+.rating-actions .btn { width: 100%; }
+.reviews-widget {
+  position: relative; height: 720px; overflow: hidden;
+  border-radius: var(--radius); border: 1px solid var(--line); background: #FFFFFF;
+}
+.reviews-widget iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
+.reviews-widget .map-fallback { color: #5B636D; }
+
 /* ---------- CTA band ---------- */
 .cta-band { padding: clamp(56px, 8vw, 88px) 0; }
 .cta-card {
@@ -294,6 +324,9 @@ section { position: relative; }
   .services-photo { position: relative; top: 0; aspect-ratio: 16 / 9; }
   .why-layout { grid-template-columns: minmax(0, 1fr); }
   .contacts-layout { grid-template-columns: minmax(0, 1fr); }
+  .reviews-layout { grid-template-columns: minmax(0, 1fr); }
+  .rating-card { position: relative; top: 0; }
+  .reviews-widget { height: 640px; }
   .map { min-height: 380px; }
 }
 @media (max-width: 860px) {
@@ -375,6 +408,7 @@ section { position: relative; }
     <nav class="nav" aria-label="Разделы">
       <a href="#services">Услуги</a>
       <a href="#why">Почему мы</a>
+      <a href="#reviews">Отзывы</a>
       <a href="#contacts">Контакты</a>
     </nav>
     <a class="btn btn-primary header-call" href="tel:+79114823699" aria-label="Позвонить: +7 (911) 482-36-99">
@@ -397,7 +431,7 @@ section { position: relative; }
           <span class="chip status" id="status" data-state="unknown" role="status" aria-live="polite">
             <span class="dot" aria-hidden="true"></span><span class="status-text">Ежедневно 09:00–19:00</span>
           </span>
-          <a class="chip" href="#contacts" aria-label="Рейтинг 4,8 из 5 по 59 оценкам">
+          <a class="chip" href="#reviews" aria-label="Рейтинг 4,8 из 5 по 59 оценкам, перейти к отзывам">
             <svg class="star" aria-hidden="true"><use href="#i-star"/></svg>4,8 · 59 оценок
           </a>
         </div>
@@ -505,6 +539,47 @@ section { position: relative; }
     </div>
   </section>
 
+  <!-- Reviews -->
+  <section class="section" id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Отзывы</span>
+        <h2 id="reviews-title">Что говорят клиенты</h2>
+        <p>Настоящие отзывы с Яндекс Карт. Обновляются сами, когда клиенты пишут новые.</p>
+      </div>
+
+      <div class="reviews-layout">
+        <div class="rating-card reveal">
+          <div class="rating-score">
+            <span class="rating-value">4,8</span>
+            <div class="rating-meta">
+              <div class="stars" role="img" aria-label="4,8 из 5 звёзд">
+                <svg aria-hidden="true"><use href="#i-star"/></svg>
+                <svg aria-hidden="true"><use href="#i-star"/></svg>
+                <svg aria-hidden="true"><use href="#i-star"/></svg>
+                <svg aria-hidden="true"><use href="#i-star"/></svg>
+                <span class="star-part" aria-hidden="true"><svg class="bg"><use href="#i-star"/></svg><svg class="fg"><use href="#i-star"/></svg></span>
+              </div>
+              <span class="rating-count">59 оценок</span>
+            </div>
+          </div>
+          <p class="rating-source">
+            <svg width="20" height="20" aria-hidden="true" style="color:var(--accent);flex:none"><use href="#i-pin"/></svg>
+            <span>Рейтинг на <strong>Яндекс Картах</strong></span>
+          </p>
+          <div class="rating-actions">
+            <a class="btn btn-primary" href="https://yandex.ru/maps/org/shiny_diski/1032059957/reviews/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a>
+          </div>
+        </div>
+
+        <div class="reviews-widget reveal">
+          <div class="map-fallback">Отзывы загружаются…</div>
+          <iframe src="https://yandex.ru/maps-reviews-widget/1032059957?comments" title="Отзывы о «Шины &amp; Диски» на Яндекс Картах" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-band" aria-labelledby="cta-title">
     <div class="container">
@@ -569,7 +644,7 @@ section { position: relative; }
         <div class="map reveal">
           <div class="map-fallback">Карта загружается…<br>Калининград, ул. Горького, 223Г</div>
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=20.495797%2C54.746061&amp;z=16&amp;pt=20.495797%2C54.746061%2Cpm2orgl"
+            src="https://yandex.ru/map-widget/v1/?ll=20.496418%2C54.745219&amp;z=16&amp;oid=1032059957&amp;ol=biz"
             title="Шины &amp; Диски на Яндекс Картах: Калининград, ул. Горького, 223Г"
             loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
