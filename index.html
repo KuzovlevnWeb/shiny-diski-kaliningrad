@@ -229,29 +229,20 @@ section { position: relative; }
 .fact-label { color: var(--muted); font-size: 0.9375rem; }
 
 /* ---------- Reviews ---------- */
-.reviews-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
-.rating-card {
-  position: sticky; top: calc(var(--header-h) + 24px);
-  display: grid; gap: 22px;
-  padding: clamp(24px, 3vw, 36px);
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+.reviews-layout { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
+.reviews-intro { position: sticky; top: calc(var(--header-h) + 32px); display: grid; gap: 32px; }
+.reviews-intro .section-head { margin-bottom: 0; }
+.reviews-help {
+  display: grid; gap: 18px;
+  padding: 24px; border-radius: var(--radius);
+  background: var(--surface); border: 1px solid var(--line);
 }
-.rating-score { display: flex; align-items: flex-end; gap: 16px; }
-.rating-value { font-family: var(--font-display); font-weight: 700; font-size: clamp(3.5rem, 7vw, 5rem); line-height: .9; }
-.rating-meta { display: grid; gap: 6px; padding-bottom: 4px; }
-.stars { display: flex; gap: 3px; color: var(--accent); }
-.stars svg { width: 20px; height: 20px; }
-.stars .star-part { position: relative; width: 20px; height: 20px; }
-.stars .star-part svg { position: absolute; inset: 0; }
-.stars .star-part .bg { color: #3A4048; }
-.stars .star-part .fg { clip-path: inset(0 20% 0 0); }
-.rating-count { color: var(--muted); font-size: 0.9375rem; }
-.rating-source { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.9375rem; padding-top: 18px; border-top: 1px solid var(--line); }
-.rating-source strong { color: var(--text); font-weight: 600; }
-.rating-actions { display: grid; gap: 10px; }
-.rating-actions .btn { width: 100%; }
+.reviews-help-text { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; align-items: start; }
+.reviews-help h3 { font-family: var(--font-body); font-size: 1.0625rem; font-weight: 700; line-height: 1.35; letter-spacing: 0; }
+.reviews-help p { color: var(--muted); font-size: 0.975rem; margin-top: 4px; }
+.reviews-help .btn { justify-self: start; }
 .reviews-widget {
-  position: relative; height: 720px; overflow: hidden;
+  position: relative; height: 700px; overflow: hidden;
   border-radius: var(--radius); border: 1px solid var(--line); background: #FFFFFF;
 }
 .reviews-widget iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
@@ -325,7 +316,7 @@ section { position: relative; }
   .why-layout { grid-template-columns: minmax(0, 1fr); }
   .contacts-layout { grid-template-columns: minmax(0, 1fr); }
   .reviews-layout { grid-template-columns: minmax(0, 1fr); }
-  .rating-card { position: relative; top: 0; }
+  .reviews-intro { position: relative; top: 0; }
   .reviews-widget { height: 640px; }
   .map { min-height: 380px; }
 }
@@ -542,33 +533,22 @@ section { position: relative; }
   <!-- Reviews -->
   <section class="section" id="reviews" aria-labelledby="reviews-title">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Отзывы</span>
-        <h2 id="reviews-title">Что говорят клиенты</h2>
-        <p>Настоящие отзывы с Яндекс Карт. Обновляются сами, когда клиенты пишут новые.</p>
-      </div>
-
       <div class="reviews-layout">
-        <div class="rating-card reveal">
-          <div class="rating-score">
-            <span class="rating-value">4,8</span>
-            <div class="rating-meta">
-              <div class="stars" role="img" aria-label="4,8 из 5 звёзд">
-                <svg aria-hidden="true"><use href="#i-star"/></svg>
-                <svg aria-hidden="true"><use href="#i-star"/></svg>
-                <svg aria-hidden="true"><use href="#i-star"/></svg>
-                <svg aria-hidden="true"><use href="#i-star"/></svg>
-                <span class="star-part" aria-hidden="true"><svg class="bg"><use href="#i-star"/></svg><svg class="fg"><use href="#i-star"/></svg></span>
-              </div>
-              <span class="rating-count">59 оценок</span>
-            </div>
+        <div class="reviews-intro">
+          <div class="section-head reveal">
+            <span class="eyebrow">Отзывы</span>
+            <h2 id="reviews-title">Что говорят клиенты</h2>
+            <p>Отзывы приходят напрямую с Яндекс Карт: мы их не отбираем и не редактируем. Новые появляются здесь сами.</p>
           </div>
-          <p class="rating-source">
-            <svg width="20" height="20" aria-hidden="true" style="color:var(--accent);flex:none"><use href="#i-pin"/></svg>
-            <span>Рейтинг на <strong>Яндекс Картах</strong></span>
-          </p>
-          <div class="rating-actions">
-            <a class="btn btn-primary" href="https://yandex.ru/maps/org/shiny_diski/1032059957/reviews/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a>
+          <div class="reviews-help reveal">
+            <div class="reviews-help-text">
+              <span class="contact-icon"><svg aria-hidden="true"><use href="#i-wrench"/></svg></span>
+              <div>
+                <h3>Что-то не так после визита?</h3>
+                <p>Появилась вибрация или колесо спускает? Позвоните, разберёмся.</p>
+              </div>
+            </div>
+            <a class="btn btn-outline" href="tel:+79114823699"><svg aria-hidden="true"><use href="#i-phone"/></svg>+7 (911) 482-36-99</a>
           </div>
         </div>
 
